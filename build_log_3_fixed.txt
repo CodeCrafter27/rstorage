@@ -1,0 +1,113 @@
+﻿
+> r_storage@0.1.0 build
+> next build
+
+node.exe : ΓÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but 
+it may not be 
+correct.
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : 
+NotSpecified: (Γ    
+Üá Warning: Ne...not 
+    be 
+correct.:String) [   
+ ], RemoteException
+    + 
+FullyQualifiedError  
+  Id : 
+NativeCommandErr    
+or
+ 
+ We detected 
+multiple lockfiles 
+and selected the 
+directory of C:\Users
+\Priyanka\pnpm-lock.y
+aml as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs
+.org/docs/app/api-ref
+erence/config/next-co
+nfig-js/turbopack#roo
+t-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\Priyank
+a\OneDrive\Desktop\r_
+storage\package-lock.
+json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 4.2s
+  Running TypeScript ...
+Failed to compile.
+
+./src/components/sect
+ions/projects.tsx:79:
+18
+Type error: Cannot 
+find name 
+'selectedProject'.
+
+[0m [90m 77 |[39m 
+            {[90m/* 
+Project Detail Modal 
+(Simple Lightbox) 
+*/[39m}
+ [90m 78 |[39m     
+        [33m<[39m[
+33mAnimatePresence[3
+9m[33m>[39m
+[31m[1m>[22m[39m
+[90m 79 |[39m       
+          
+{selectedProject 
+[33m&&[39m (
+ [90m    |[39m     
+             
+[31m[1m^[22m[39m
+ [90m 80 |[39m     
+                [33m
+<[39m[33mdiv[39m c
+lassName[33m=[39m[
+32m"fixed inset-0 
+z-50 flex 
+items-center 
+justify-center 
+p-4"[39m[33m>[39m
+ [90m 81 |[39m     
+                    
+[33m<[39m[33mmotion
+[39m[33m.[39mdiv
+ [90m 82 |[39m     
+                     
+   
+initial[33m=[39m{{ 
+opacity[33m:[39m 
+[35m0[39m }}[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

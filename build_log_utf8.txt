@@ -1,0 +1,112 @@
+﻿
+> r_storage@0.1.0 build
+> next build
+
+node.exe : ΓÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but 
+it may not be 
+correct.
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ΓÜá War   
+ ning: Ne...not b    
+e correct.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+ We detected 
+multiple lockfiles 
+and selected the 
+directory of C:\Users
+\Priyanka\pnpm-lock.y
+aml as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs
+.org/docs/app/api-ref
+erence/config/next-co
+nfig-js/turbopack#roo
+t-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\Priyank
+a\OneDrive\Desktop\r_
+storage\package-lock.
+json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.6s
+  Running TypeScript ...
+Failed to compile.
+
+./src/actions/send-em
+ail.ts:3:24
+Type error: Could 
+not find a 
+declaration file for 
+module 'nodemailer'. 
+'C:/Users/Priyanka/On
+eDrive/Desktop/r_stor
+age/node_modules/node
+mailer/lib/nodemailer
+.js' implicitly has 
+an 'any' type.
+  Try `npm i 
+--save-dev 
+@types/nodemailer` 
+if it exists or add 
+a new declaration 
+(.d.ts) file 
+containing `declare 
+module 'nodemailer';`
+
+[0m [90m 1 |[39m 
+[32m"use 
+server"[39m
+ [90m 2 |[39m
+[31m[1m>[22m[39m
+[90m 3 |[39m 
+[36mimport[39m 
+nodemailer 
+[36mfrom[39m [32m"
+nodemailer"[39m
+ [90m   |[39m      
+                  
+[31m[1m^[22m[39m
+ [90m 4 |[39m 
+[36mimport[39m { z 
+} [36mfrom[39m 
+[32m"zod"[39m
+ [90m 5 |[39m
+ [90m 6 |[39m 
+[36mconst[39m 
+contactFormSchema 
+[33m=[39m z[33m.[
+39mobject({[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

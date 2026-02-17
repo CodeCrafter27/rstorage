@@ -1,0 +1,126 @@
+﻿
+> r_storage@0.1.0 build
+> next build
+
+node.exe : ΓÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but 
+it may not be 
+correct.
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ΓÜá War   
+ ning: Ne...not b    
+e correct.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+ We detected 
+multiple lockfiles 
+and selected the 
+directory of C:\Users
+\Priyanka\pnpm-lock.y
+aml as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs
+.org/docs/app/api-ref
+erence/config/next-co
+nfig-js/turbopack#roo
+t-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\Priyank
+a\OneDrive\Desktop\r_
+storage\package-lock.
+json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.4s
+  Running TypeScript ...
+Failed to compile.
+
+./src/data/projects.t
+s:47:9
+Type error: Type 
+'"Cantilever"' is 
+not assignable to 
+type '"Racking" | 
+"Mezzanine" | 
+"Automation" | 
+"Shelving"'.
+
+[0m [90m 45 |[39m 
+        
+title[33m:[39m 
+[32m"Heavy 
+Machinery Warehouse"
+[39m[33m,[39m
+ [90m 46 |[39m     
+    
+location[33m:[39m 
+[32m"Chennai, Tamil 
+Nadu"[39m[33m,[39m
+[31m[1m>[22m[39m
+[90m 47 |[39m       
+  
+category[33m:[39m 
+[32m"Cantilever"[39m
+[33m,[39m [90m// 
+Mapping to "Racking" 
+or adding new 
+category in types if 
+needed commonly[39m
+ [90m    |[39m     
+    
+[31m[1m^[22m[39m
+ [90m 48 |[39m     
+    [90m// For 
+simplicity in this 
+demo, I'll stick to 
+the main categories 
+or map it. Let's add 
+Cantilever to type 
+if needed, but for 
+now I'll use Racking 
+to match filter.[39m
+ [90m 49 |[39m     
+    [90m// 
+Actually, let's 
+update type to 
+include Cantilever 
+or just use 
+Racking.[39m
+ [90m 50 |[39m     
+    [90m// I will 
+stick to the 
+categories defined: 
+Racking, Mezzanine, 
+Automation, 
+Shelving.[39m[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

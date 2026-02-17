@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-orbitron);
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+}
+
+:root {
+  /* White and Deep Blue Light Theme */
+  --background: #ffffff;
+  --foreground: #0a1628;
+  /* Deep blue-black for main text */
+
+  --primary: #0c4a6e;
+  /* Deep blue */
+  --primary-foreground: #ffffff;
+
+  --secondary: #f0f9ff;
+  /* Very light blue */
+  --secondary-foreground: #0c4a6e;
+
+  --accent: #0284c7;
+  /* Bright blue */
+  --accent-foreground: #ffffff;
+
+  --muted: #f8fafc;
+  --muted-foreground: #1e293b;
+  /* Darker slate for secondary text */
+
+  --card: #ffffff;
+  --card-foreground: #0a1628;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Force light mode even in dark mode preference */
+    --background: #ffffff;
+    --foreground: #0a1628;
+
+    --primary: #0c4a6e;
+    --primary-foreground: #ffffff;
+
+    --secondary: #f0f9ff;
+    --secondary-foreground: #0c4a6e;
+
+    --accent: #0284c7;
+    --accent-foreground: #ffffff;
+
+    --muted: #f8fafc;
+    --muted-foreground: #1e293b;
+
+    --card: #ffffff;
+    --card-foreground: #0a1628;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
