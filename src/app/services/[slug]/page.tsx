@@ -61,7 +61,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     <div>
                         <h2 className="text-3xl font-bold font-display mb-6">Overview</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                            {service.description}
+                            {service.fullDescription}
                         </p>
 
                         <h3 className="text-2xl font-bold font-display mb-4">Key Features</h3>

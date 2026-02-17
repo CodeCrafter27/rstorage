@@ -9,7 +9,7 @@ export interface Service {
     icon: LucideIcon
     image: string // In real app, path to image
     features: string[]
-    benefits: string[]
+    benefits: { title: string; description: string }[]
 }
 
 export const servicesData: Service[] = [
@@ -28,10 +28,9 @@ export const servicesData: Service[] = [
             "Powder-coated finish for durability"
         ],
         benefits: [
-            "Maximize vertical storage space",
-            "Improve inventory organization",
-            "Enhance warehouse safety",
-            "Scale with your business growth"
+            { title: "Vertical Storage", description: "Maximize your vertical storage space effectively." },
+            { title: "Organization", description: "Improve inventory organization and tracking." },
+            { title: "Safety", description: "Enhance warehouse safety with certified systems." }
         ]
     },
     {
@@ -49,10 +48,9 @@ export const servicesData: Service[] = [
             "Variety of flooring options (steel, ply, grating)"
         ],
         benefits: [
-            "Double your usable floor area",
-            "Cost-effective alternative to relocation",
-            "Quick installation with minimal disruption",
-            "Versatile applications (storage, office, retail)"
+            { title: "Space Doubling", description: "Double your usable floor area without relocation." },
+            { title: "Cost Effective", description: "A budget-friendly alternative to building expansion." },
+            { title: "Quick Install", description: "Fast installation with minimal business disruption." }
         ]
     },
     {
@@ -70,10 +68,9 @@ export const servicesData: Service[] = [
             "Indoor and outdoor options"
         ],
         benefits: [
-            "Easy loading and unloading of long items",
-            "No front columns to obstruct access",
-            "Flexible storage for varying lengths",
-            "Organized storage for pipes, lumber, and steel"
+            { title: "Long Item Storage", description: "Perfect for pipes, lumber, and long metal bars." },
+            { title: "Easy Access", description: "Open design allows for quick loading and unloading." },
+            { title: "Durability", description: "Heavy-duty construction for industrial environments." }
         ]
     },
     {
@@ -91,10 +88,9 @@ export const servicesData: Service[] = [
             "Multi-tier shelving options"
         ],
         benefits: [
-            "Efficient storage for small parts",
-            "Easy manual picking",
-            "Highly organized inventory",
-            "Quick and tool-free assembly (boltless)"
+            { title: "Parts Organization", description: "Highly efficient storage for small parts and tools." },
+            { title: "Manual Picking", description: "Designed for easy manual access and picking." },
+            { title: "Quick Assembly", description: "Fast and often tool-free setup for modular needs." }
         ]
     },
     {
@@ -112,10 +108,9 @@ export const servicesData: Service[] = [
             "Safety sensors and barriers"
         ],
         benefits: [
-            "Reduce labor costs",
-            "Minimize picking errors",
-            "24/7 operation capability",
-            "Maximum storage density"
+            { title: "Efficiency", description: "Significantly reduce labor costs and picking errors." },
+            { title: "24/7 Operation", description: "Keep your warehouse running around the clock." },
+            { title: "Max Density", description: "Achieve the highest possible storage density." }
         ]
     },
     {
@@ -133,10 +128,9 @@ export const servicesData: Service[] = [
             "Relocation services"
         ],
         benefits: [
-            "Ensure compliance with safety standards",
-            "Prolong the life of your equipment",
-            "Prevent accidents and collapses",
-            "Peace of mind with professional support"
+            { title: "Compliance", description: "Ensure your systems meet all safety standards." },
+            { title: "Longevity", description: "Prolong the operational life of your storage equipment." },
+            { title: "Peace of Mind", description: "Expert support and regular safety certifications." }
         ]
     }
 ]
