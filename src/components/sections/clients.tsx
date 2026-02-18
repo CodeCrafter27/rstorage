@@ -1,57 +1,55 @@
 "use client"
 import { motion } from "framer-motion"
-import Image from "next/image"
 
 const clients = [
     {
         name: "Flipkart",
-        logo: "https://www.freepnglogos.com/uploads/flipkart-logo-png/flipkart-inventory-management-system-zapier-1.png",
-        width: 140,
-        height: 40
+        gradient: "from-[#2874f0] to-[#047BD5]",
+        secondary: "Selectively Blue"
     },
     {
         name: "Miniso",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Miniso_logo.png/1024px-Miniso_logo.png",
-        width: 100,
-        height: 50
+        gradient: "from-[#ec1c24] to-[#ff4d4d]",
+        secondary: "Life is for fun"
     },
     {
         name: "Blinkit",
-        logo: "https://www.vectorseek.com/wp-content/uploads/2023/07/Blinkit-Logo-Vector.png", // Alternative found
-        width: 120,
-        height: 40
+        gradient: "from-[#f7cb05] to-[#fbc02d]",
+        secondary: "10 min delivery"
     },
     {
         name: "Zepto",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Logo_of_Zepto.png/1068px-Logo_of_Zepto.png",
-        width: 110,
-        height: 40
+        gradient: "from-[#3e0097] to-[#ec008c]",
+        secondary: "Seconds away"
     },
     {
-        name: "Tata1mg",
-        logo: "https://marketing-compaigns.s3.ap-south-1.amazonaws.com/emailer/Landing-Pages-2021/Tata-1mg-Announcement/TATA%201mg%20logo.svg",
-        width: 130,
-        height: 45
+        name: "Tata 1mg",
+        gradient: "from-[#ff6f61] to-[#ff8a80]",
+        secondary: "Digital Health"
     },
 ]
 
-// Duplicate for loop
-const scrollClients = [...clients, ...clients, ...clients, ...clients]
+// Increased duplicate count for even smoother scroll
+const scrollClients = [...clients, ...clients, ...clients, ...clients, ...clients, ...clients]
 
 export function Clients() {
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-white overflow-hidden border-y border-gray-50">
             <div className="container mx-auto px-6 mb-16 text-center">
                 <div className="flex items-center justify-center gap-4 mb-4">
-                    <div className="h-[1px] w-8 bg-primary/20" />
-                    <h2 className="text-sm font-bold text-primary/60 uppercase tracking-[0.3em]">Market Leaders Trust Us</h2>
-                    <div className="h-[1px] w-8 bg-primary/20" />
+                    <div className="h-[1px] w-12 bg-primary/10" />
+                    <h2 className="text-xs font-bold text-primary/40 uppercase tracking-[0.4em]">Corporate Partners & Clients</h2>
+                    <div className="h-[1px] w-12 bg-primary/10" />
                 </div>
             </div>
 
             <div className="relative flex whitespace-nowrap">
+                {/* Visual Fades */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
                 <motion.div
-                    className="flex shrink-0 items-center justify-around gap-20 px-10"
+                    className="flex shrink-0 items-center justify-around gap-24 px-12"
                     animate={{
                         x: [0, -100 + "%"],
                     }}
@@ -59,7 +57,7 @@ export function Clients() {
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 35,
+                            duration: 40,
                             ease: "linear",
                         },
                     }}
@@ -67,17 +65,14 @@ export function Clients() {
                     {scrollClients.map((client, idx) => (
                         <div
                             key={idx}
-                            className="flex items-center justify-center w-[200px] h-20 px-8 hover:scale-110 transition-transform duration-500"
+                            className="group flex flex-col items-center justify-center px-12 transition-all duration-500 hover:scale-110"
                         >
-                            <div className="relative w-full h-full flex items-center justify-center">
-                                <img
-                                    src={client.logo}
-                                    alt={client.name}
-                                    className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer"
-                                />
-                            </div>
+                            <span className={`text-4xl md:text-5xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r ${client.gradient} opacity-80 group-hover:opacity-100 transition-opacity`}>
+                                {client.name}
+                            </span>
+                            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-300 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                {client.secondary}
+                            </span>
                         </div>
                     ))}
                 </motion.div>
