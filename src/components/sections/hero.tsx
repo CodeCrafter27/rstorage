@@ -1,7 +1,7 @@
 "use client"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Warehouse, CheckCircle2 } from "lucide-react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 
 export function Hero() {
@@ -11,9 +11,7 @@ export function Hero() {
 
     return (
         <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white pt-20">
-            {/* Background Elements */}
             <div className="absolute inset-0 z-0">
-                {/* Decorative Blobs */}
                 <motion.div
                     style={{ y: y1 }}
                     className="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-blue-100 rounded-full blur-3xl opacity-40"
@@ -24,17 +22,26 @@ export function Hero() {
                 />
             </div>
 
-            {/* Content */}
             <div className="relative z-10 container mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
+
                     <div className="space-y-8">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
+                            animate={{
+                                opacity: 1,
+                                y: [0, -10, 0]
+                            }}
+                            transition={{
+                                duration: 0.8,
+                                y: {
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }
+                            }}
                         >
-                            <span className="inline-block py-2 px-4 rounded-full bg-blue-100 border-2 border-blue-200 text-primary text-sm font-bold uppercase tracking-wide">
+                            <span className="inline-block py-2 px-6 rounded-full bg-blue-100 border-2 border-primary/20 text-primary text-sm font-bold uppercase tracking-widest shadow-sm">
                                 Premium Industrial Storage Solutions
                             </span>
                         </motion.div>
@@ -76,7 +83,6 @@ export function Hero() {
                             </Link>
                         </motion.div>
 
-                        {/* Stats */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -106,11 +112,13 @@ export function Hero() {
                         className="relative hidden lg:block"
                     >
                         <div className="relative w-full h-[500px] rounded-2xl overflow-hidden border-2 border-blue-200 shadow-2xl shadow-blue-200/30">
-                            {/* Placeholder for warehouse image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-700" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Warehouse className="w-48 h-48 text-white/20" />
-                            </div>
+
+                            {/* Warehouse Image */}
+                            <img
+                                src="/warehouse1.jpg"
+                                alt="Warehouse"
+                                className="w-full h-full object-cover"
+                            />
 
                             {/* Floating Badge */}
                             <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-4 rounded-xl border-2 border-blue-100 shadow-lg">
@@ -124,12 +132,13 @@ export function Hero() {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </motion.div>
+
                 </div>
             </div>
 
-            {/* Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
