@@ -5,12 +5,12 @@ import { X } from "lucide-react"
 
 interface ModalProps {
     isOpen: boolean
-    onClose: () => void
+    onCloseAction: () => void
     title: string
     children: React.ReactNode
 }
 
-export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export function Modal({ isOpen, onCloseAction, title, children }: ModalProps) {
     if (!isOpen) return null
 
     return (
@@ -21,7 +21,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={onClose}
+                        onClick={onCloseAction}
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
                     />
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
@@ -33,7 +33,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                         >
                             <div className="flex items-center justify-between p-4 border-b border-border bg-muted/20">
                                 <h3 className="font-display font-bold text-lg">{title}</h3>
-                                <button onClick={onClose} className="p-1 rounded-full hover:bg-muted transition-colors">
+                                <button onClick={onCloseAction} className="p-1 rounded-full hover:bg-muted transition-colors">
                                     <X size={20} />
                                 </button>
                             </div>

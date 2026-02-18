@@ -349,7 +349,7 @@ export function Header() {
                 </AnimatePresence>
             </header>
 
-            <Modal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} title="Request a Quote">
+            <Modal isOpen={isQuoteOpen} onCloseAction={() => setIsQuoteOpen(false)} title="Request a Quote">
                 <QuoteForm onClose={() => setIsQuoteOpen(false)} />
             </Modal>
         </>

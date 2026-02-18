@@ -156,7 +156,7 @@ export default function ProductPage() {
                 </div>
             </div>
 
-            <Modal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} title="Product Inquiry">
+            <Modal isOpen={isQuoteOpen} onCloseAction={() => setIsQuoteOpen(false)} title="Product Inquiry">
                 <QuoteForm onClose={() => setIsQuoteOpen(false)} initialService={product.title} />
             </Modal>
         </main>
