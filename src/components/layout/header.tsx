@@ -27,7 +27,7 @@ export function Header() {
     const [isQuoteOpen, setIsQuoteOpen] = useState(false)
     const [isSolutionsHovered, setIsSolutionsHovered] = useState(false)
     const [isProjectsHovered, setIsProjectsHovered] = useState(false)
-    const [activeMobileCategory, setActiveMobileCategory] = useState<string | null>(null)
+    const [activeMobileCategory, setActiveMobileCategory] = useState<string | null>("Expert Services")
 
     const { scrollYProgress } = useScroll()
     const scaleX = useSpring(scrollYProgress, {
@@ -85,63 +85,110 @@ export function Header() {
                                                     animate={{ opacity: 1, y: 0 }}
                                                     exit={{ opacity: 0, y: 10 }}
                                                     transition={{ duration: 0.2 }}
-                                                    className="fixed top-[64px] left-0 right-0 w-full bg-card border-b border-border shadow-2xl p-8 z-50 origin-top"
+                                                    className="fixed top-[64px] left-0 right-0 w-full bg-card border-b border-border shadow-2xl z-50 h-[650px] flex"
                                                 >
-                                                    <div className="container mx-auto grid grid-cols-7 gap-8">
-                                                        {/* Services Column */}
-                                                        <div className="flex flex-col gap-4 border-r border-border pr-8">
-                                                            <h4 className="font-bold text-primary text-sm uppercase tracking-wider">Expert Services</h4>
-                                                            <div className="flex flex-col gap-2">
-                                                                {servicesData.map((service) => (
-                                                                    <Link
-                                                                        key={service.id}
-                                                                        href={`/services/${service.slug}`}
-                                                                        className="text-sm font-medium text-foreground hover:text-primary transition-colors py-1 group/link"
-                                                                        onClick={() => setIsSolutionsHovered(false)}
-                                                                    >
-                                                                        <div className="flex items-center justify-between">
-                                                                            {service.title}
-                                                                            <ChevronRight size={12} className="opacity-0 group-hover/link:opacity-100 transition-all -translate-x-2 group-hover/link:translate-x-0" />
-                                                                        </div>
-                                                                    </Link>
-                                                                ))}
-                                                                <Link
-                                                                    href="/#solutions"
-                                                                    className="text-xs font-bold text-primary hover:underline mt-4"
-                                                                    onClick={() => setIsSolutionsHovered(false)}
+                                                    <div className="container mx-auto flex h-full">
+                                                        {/* Sidebar */}
+                                                        <div className="w-1/4 border-r border-border bg-muted/10 overflow-y-auto py-6 pr-2 custom-scrollbar">
+                                                            <div className="flex flex-col gap-1">
+                                                                <h4 className="px-4 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Categories</h4>
+                                                                <button
+                                                                    onMouseEnter={() => setActiveMobileCategory("Expert Services")}
+                                                                    className={cn(
+                                                                        "px-4 py-3 text-left text-sm font-medium rounded-lg transition-all flex items-center justify-between mx-2",
+                                                                        activeMobileCategory === "Expert Services"
+                                                                            ? "bg-primary text-primary-foreground shadow-md"
+                                                                            : "hover:bg-muted text-foreground"
+                                                                    )}
                                                                 >
-                                                                    Explore All Solutions →
-                                                                </Link>
+                                                                    Expert Services
+                                                                    {activeMobileCategory === "Expert Services" && <ChevronRight size={14} />}
+                                                                </button>
+
+                                                                {productCategories.map((category) => (
+                                                                    <button
+                                                                        key={category.title}
+                                                                        onMouseEnter={() => setActiveMobileCategory(category.title)}
+                                                                        className={cn(
+                                                                            "px-4 py-3 text-left text-sm font-medium rounded-lg transition-all flex items-center justify-between mx-2",
+                                                                            activeMobileCategory === category.title
+                                                                                ? "bg-primary text-primary-foreground shadow-md"
+                                                                                : "hover:bg-muted text-foreground"
+                                                                        )}
+                                                                    >
+                                                                        {category.title}
+                                                                        {activeMobileCategory === category.title && <ChevronRight size={14} />}
+                                                                    </button>
+                                                                ))}
                                                             </div>
                                                         </div>
 
-                                                        {/* Product Categories */}
-                                                        {productCategories.map((category) => (
-                                                            <div key={category.title} className="flex flex-col gap-4">
-                                                                <h4 className="font-bold text-primary text-sm uppercase tracking-wider">{category.title}</h4>
-                                                                <div className="flex flex-col gap-2">
-                                                                    {category.items.slice(0, 5).map((product) => (
-                                                                        <Link
-                                                                            key={product.id}
-                                                                            href={`/products/${product.slug}`}
-                                                                            className="text-sm text-foreground/70 hover:text-primary transition-colors hover:translate-x-1 duration-200"
-                                                                            onClick={() => setIsSolutionsHovered(false)}
-                                                                        >
-                                                                            {product.title}
-                                                                        </Link>
-                                                                    ))}
-                                                                    {category.items.length > 5 && (
-                                                                        <Link
-                                                                            href="/products"
-                                                                            className="text-xs font-bold text-muted-foreground hover:text-primary mt-1"
-                                                                            onClick={() => setIsSolutionsHovered(false)}
-                                                                        >
-                                                                            +{category.items.length - 5} More...
-                                                                        </Link>
-                                                                    )}
+                                                        {/* Content Area */}
+                                                        <div className="flex-1 p-8 overflow-y-auto custom-scrollbar bg-card">
+                                                            <div className="h-full">
+                                                                <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
+                                                                    <h3 className="text-2xl font-bold text-foreground">
+                                                                        {activeMobileCategory || "Select a Category"}
+                                                                    </h3>
+                                                                    <Link href="/products" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
+                                                                        View All Products <ChevronRight size={14} />
+                                                                    </Link>
                                                                 </div>
+
+                                                                {activeMobileCategory === "Expert Services" ? (
+                                                                    <div className="grid grid-cols-3 gap-6">
+                                                                        {servicesData.map((service) => (
+                                                                            <Link
+                                                                                key={service.id}
+                                                                                href={`/services/${service.slug}`}
+                                                                                className="group block p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-muted/30 transition-all duration-300"
+                                                                                onClick={() => setIsSolutionsHovered(false)}
+                                                                            >
+                                                                                <div className="flex items-start gap-4">
+                                                                                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+                                                                                        <service.icon size={24} />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h4 className="font-bold text-foreground group-hover:text-primary transition-colors mb-2">{service.title}</h4>
+                                                                                        <p className="text-xs text-muted-foreground line-clamp-2">{service.shortDescription}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </Link>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : (
+                                                                    <div className="grid grid-cols-4 gap-6">
+                                                                        {productCategories
+                                                                            .find(c => c.title === activeMobileCategory)
+                                                                            ?.items.map((product) => (
+                                                                                <Link
+                                                                                    key={product.id}
+                                                                                    href={`/products/${product.slug}`}
+                                                                                    className="group flex flex-col gap-3 p-3 rounded-xl hover:bg-muted/30 transition-all"
+                                                                                    onClick={() => setIsSolutionsHovered(false)}
+                                                                                >
+                                                                                    <div className="aspect-[4/3] rounded-lg bg-muted overflow-hidden relative shadow-sm border border-border/50">
+                                                                                        <img
+                                                                                            src={product.image}
+                                                                                            alt={product.title}
+                                                                                            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                                                                        />
+                                                                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h5 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                                                                                            {product.title}
+                                                                                        </h5>
+                                                                                        <span className="text-[10px] text-muted-foreground mt-1 block">
+                                                                                            {product.category}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </Link>
+                                                                            ))}
+                                                                    </div>
+                                                                )}
                                                             </div>
-                                                        ))}
+                                                        </div>
                                                     </div>
                                                 </motion.div>
                                             )}

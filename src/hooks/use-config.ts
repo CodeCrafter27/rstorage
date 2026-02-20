@@ -7,6 +7,8 @@ interface Config {
     phone: string
     whatsapp: string
     whatsappMessage: string
+    companyPhone: string
+    contactWhatsApp: string
 }
 
 export function useConfig() {
@@ -14,7 +16,9 @@ export function useConfig() {
         companyName: "R Storage",
         phone: "+919310149385",
         whatsapp: "+919310149385",
-        whatsappMessage: "Hello R Storage, I am interested in your storage solutions."
+        whatsappMessage: "Hello R Storage, I am interested in your storage solutions.",
+        companyPhone: "+919310149385",
+        contactWhatsApp: "919310149385"
     })
 
     useEffect(() => {

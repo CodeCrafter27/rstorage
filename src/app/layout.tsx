@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { localBusinessSchema } from "@/lib/schema";
 
+import { Chatbot } from "@/components/chatbot";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
@@ -29,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${orbitron.variable} font-sans antialiased bg-background text-foreground`}
       >
@@ -41,6 +43,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
+        <Chatbot />
         <Footer />
       </body>
     </html>

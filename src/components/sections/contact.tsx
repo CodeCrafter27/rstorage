@@ -26,9 +26,8 @@ export function Contact() {
                                 <div>
                                     <h4 className="font-bold">Head Office</h4>
                                     <p className="text-muted-foreground">
-                                        Plot No. 4, Gali No. 1, Near Shiv Mandir,<br />
-                                        Sanjay Gandhi Memorial Nagar, New Industrial Township,<br />
-                                        Faridabad, Haryana - 121001
+                                        Khasra No 150, Village Sobhapur, Delhi Meerut Road
+                                         Muradnagar - 201206, Ghaziabad, Uttar Pradesh, India
                                     </p>
                                 </div>
                             </div>

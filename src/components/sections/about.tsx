@@ -43,20 +43,24 @@ export function About() {
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-4 pt-8">
                             <div className="h-48 rounded-2xl bg-slate-800 w-full overflow-hidden relative group">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Factory" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                                 <div className="absolute bottom-2 left-3 text-xs text-white/80 font-medium">State-of-the-art Factory</div>
                             </div>
                             <div className="h-64 rounded-2xl bg-blue-900 w-full overflow-hidden relative group">
+                                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5f612711?auto=format&fit=crop&q=80&w=800" alt="Installation" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                                 <div className="absolute bottom-2 left-3 text-xs text-white/80 font-medium">Installation Team</div>
                             </div>
                         </div>
                         <div className="space-y-4">
                             <div className="h-64 rounded-2xl bg-indigo-900 w-full overflow-hidden relative group">
+                                <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800" alt="Projects" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                                 <div className="absolute bottom-2 left-3 text-xs text-white/80 font-medium">Completed Projects</div>
                             </div>
                             <div className="h-48 rounded-2xl bg-slate-700 w-full overflow-hidden relative group">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Office" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                                 <div className="absolute bottom-2 left-3 text-xs text-white/80 font-medium">Head Office</div>
                             </div>

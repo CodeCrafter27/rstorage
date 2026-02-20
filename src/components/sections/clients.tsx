@@ -5,7 +5,7 @@ const clients = [
     {
         name: "Flipkart",
         gradient: "from-[#2874f0] to-[#047BD5]",
-        secondary: "Selectively Blue"
+        secondary: "Naye India Ka Saath"
     },
     {
         name: "Miniso",
