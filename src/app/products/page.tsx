@@ -4,6 +4,7 @@ import { productsData, productCategories } from "@/data/products"
 import { motion } from "framer-motion"
 import { Search, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { cn } from "@/lib/utils"
 import { useState, useMemo, useEffect, Suspense } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -47,29 +48,41 @@ function ProductsContent() {
                 </motion.div>
             </div>
 
-            {/* Filters & Search */}
-            <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between sticky top-[80px] z-30 bg-background/80 backdrop-blur-md py-4 -mx-4 px-4 rounded-2xl border border-border/40 shadow-sm">
-                <div className="flex flex-wrap gap-2">
-                    {categories.map((cat) => (
-                        <Button
-                            key={cat}
-                            variant={selectedCategory === cat ? "accent" : "outline"}
-                            size="sm"
-                            onClick={() => setSelectedCategory(cat)}
-                            className="rounded-full px-6"
-                        >
-                            {cat}
-                        </Button>
-                    ))}
-                </div>
-                <div className="relative w-full md:w-80">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                    <Input
-                        placeholder="Search products..."
-                        className="pl-10 h-11 bg-muted/30 border-border/50"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
+            {/* Filters & Search - Premium Scrollable Layout */}
+            <div className="flex flex-col gap-8 mb-16 sticky top-[80px] z-30 bg-background/80 backdrop-blur-xl py-6 -mx-4 px-4 rounded-3xl border border-border/40 shadow-sm transition-all duration-300">
+                <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <div className="w-full overflow-hidden relative">
+                        {/* Horizontal Scrollable Categories */}
+                        <div className="flex gap-2 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory custom-scrollbar-hide h-14 items-center">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setSelectedCategory(cat)}
+                                    className={cn(
+                                        "whitespace-nowrap px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 snap-start border",
+                                        selectedCategory === cat
+                                            ? "bg-primary text-white border-primary shadow-lg shadow-primary/25 scale-105"
+                                            : "bg-muted/30 text-muted-foreground/80 border-border/50 hover:bg-muted/50 hover:text-foreground"
+                                    )}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
+                        {/* Gradient Fade for scroll indicators */}
+                        <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-background/80 to-transparent pointer-events-none" />
+                        <div className="absolute left-0 top-0 bottom-4 w-12 bg-gradient-to-r from-background/80 to-transparent pointer-events-none" />
+                    </div>
+
+                    <div className="relative w-full md:w-80 shrink-0">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60 w-4 h-4" />
+                        <Input
+                            placeholder="Search products..."
+                            className="pl-10 h-11 bg-muted/30 border-border/50 rounded-2xl focus:ring-primary/20 transition-all font-medium"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
                 </div>
             </div>
 

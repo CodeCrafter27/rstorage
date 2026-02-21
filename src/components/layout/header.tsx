@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronRight, ChevronDown, Warehouse, Box, ShoppingBag, Factory, Layers, LayoutGrid, Grid, Package, Zap, ShoppingCart, CreditCard, ShoppingBasket, Columns } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/modal"
@@ -28,6 +28,7 @@ export function Header() {
     const [isSolutionsHovered, setIsSolutionsHovered] = useState(false)
     const [isProjectsHovered, setIsProjectsHovered] = useState(false)
     const [activeMobileCategory, setActiveMobileCategory] = useState<string | null>("Expert Services")
+    const [activeSubCategory, setActiveSubCategory] = useState<string | null>("Expert Services")
 
     const { scrollYProgress } = useScroll()
     const scaleX = useSpring(scrollYProgress, {
@@ -85,108 +86,127 @@ export function Header() {
                                                     animate={{ opacity: 1, y: 0 }}
                                                     exit={{ opacity: 0, y: 10 }}
                                                     transition={{ duration: 0.2 }}
-                                                    className="fixed top-[64px] left-0 right-0 w-full bg-card border-b border-border shadow-2xl z-50 h-[650px] flex"
+                                                    className="fixed top-[64px] left-0 right-0 w-full bg-card border-b border-border shadow-2xl z-50 h-[680px] flex overflow-hidden"
                                                 >
                                                     <div className="container mx-auto flex h-full">
-                                                        {/* Sidebar */}
-                                                        <div className="w-1/4 border-r border-border bg-muted/10 overflow-y-auto py-6 pr-2 custom-scrollbar">
-                                                            <div className="flex flex-col gap-1">
-                                                                <h4 className="px-4 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Categories</h4>
+                                                        {/* Sidebar - Widened for 18 categories */}
+                                                        <div className="w-[320px] border-r border-border bg-muted/5 overflow-y-auto py-8 pr-3 custom-scrollbar">
+                                                            <div className="flex flex-col gap-1.5 px-2">
+                                                                <div className="px-4 mb-4">
+                                                                    <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1">Our Solutions</h4>
+                                                                    <div className="h-0.5 w-10 bg-primary/30 rounded-full" />
+                                                                </div>
+
                                                                 <button
                                                                     onMouseEnter={() => setActiveMobileCategory("Expert Services")}
                                                                     className={cn(
-                                                                        "px-4 py-3 text-left text-sm font-medium rounded-lg transition-all flex items-center justify-between mx-2",
+                                                                        "px-4 py-3.5 text-left text-sm font-semibold rounded-2xl transition-all flex items-center justify-between group/btn mx-1",
                                                                         activeMobileCategory === "Expert Services"
-                                                                            ? "bg-primary text-primary-foreground shadow-md"
-                                                                            : "hover:bg-muted text-foreground"
+                                                                            ? "bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]"
+                                                                            : "hover:bg-muted/50 text-foreground/70"
                                                                     )}
                                                                 >
-                                                                    Expert Services
-                                                                    {activeMobileCategory === "Expert Services" && <ChevronRight size={14} />}
+                                                                    <div className="flex items-center gap-3">
+                                                                        <Layers size={18} className={cn("transition-colors", activeMobileCategory === "Expert Services" ? "text-white" : "text-primary")} />
+                                                                        <span>Expert Services</span>
+                                                                    </div>
+                                                                    <ChevronRight size={14} className={cn("transition-transform group-hover/btn:translate-x-1", activeMobileCategory === "Expert Services" ? "opacity-100" : "opacity-0")} />
                                                                 </button>
 
-                                                                {productCategories.map((category) => (
-                                                                    <button
-                                                                        key={category.title}
-                                                                        onMouseEnter={() => setActiveMobileCategory(category.title)}
-                                                                        className={cn(
-                                                                            "px-4 py-3 text-left text-sm font-medium rounded-lg transition-all flex items-center justify-between mx-2",
-                                                                            activeMobileCategory === category.title
-                                                                                ? "bg-primary text-primary-foreground shadow-md"
-                                                                                : "hover:bg-muted text-foreground"
-                                                                        )}
-                                                                    >
-                                                                        {category.title}
-                                                                        {activeMobileCategory === category.title && <ChevronRight size={14} />}
-                                                                    </button>
-                                                                ))}
+                                                                {productCategories.map((category) => {
+                                                                    const Icon = (category as any).icon || Package
+                                                                    return (
+                                                                        <button
+                                                                            key={category.title}
+                                                                            onMouseEnter={() => setActiveMobileCategory(category.title)}
+                                                                            className={cn(
+                                                                                "px-4 py-3.5 text-left text-sm font-semibold rounded-2xl transition-all flex items-center justify-between group/btn mx-1",
+                                                                                activeMobileCategory === category.title
+                                                                                    ? "bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]"
+                                                                                    : "hover:bg-muted/50 text-foreground/70"
+                                                                            )}
+                                                                        >
+                                                                            <div className="flex items-center gap-3">
+                                                                                <Icon size={18} className={cn("transition-colors", activeMobileCategory === category.title ? "text-white" : "text-primary")} />
+                                                                                <span className="truncate">{category.title}</span>
+                                                                            </div>
+                                                                            <ChevronRight size={14} className={cn("transition-transform group-hover/btn:translate-x-1", activeMobileCategory === category.title ? "opacity-100" : "opacity-0")} />
+                                                                        </button>
+                                                                    )
+                                                                })}
                                                             </div>
                                                         </div>
 
                                                         {/* Content Area */}
-                                                        <div className="flex-1 p-8 overflow-y-auto custom-scrollbar bg-card">
+                                                        <div className="flex-1 p-10 overflow-y-auto custom-scrollbar bg-background/40 backdrop-blur-md">
                                                             <div className="h-full">
-                                                                <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
-                                                                    <h3 className="text-2xl font-bold text-foreground">
-                                                                        {activeMobileCategory || "Select a Category"}
-                                                                    </h3>
-                                                                    <Link href="/products" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
-                                                                        View All Products <ChevronRight size={14} />
-                                                                    </Link>
+                                                                <div className="flex flex-col gap-3 mb-10 border-b border-border/40 pb-8">
+                                                                    <div className="flex items-center justify-between">
+                                                                        <h3 className="text-3xl font-bold text-foreground">
+                                                                            {activeMobileCategory || "Select a Category"}
+                                                                        </h3>
+                                                                        <Link href="/products" className="text-sm font-bold text-primary py-2.5 px-6 bg-primary/10 rounded-full hover:bg-primary hover:text-white transition-all shadow-sm">
+                                                                            View All Products
+                                                                        </Link>
+                                                                    </div>
+                                                                    <p className="text-muted-foreground/80 max-w-2xl text-[14px] leading-relaxed">
+                                                                        {activeMobileCategory === "Expert Services"
+                                                                            ? "Comprehensive support including professional installation, regular maintenance (AMC), and custom layouts tailored to your space."
+                                                                            : productCategories.find(c => c.title === activeMobileCategory)?.description}
+                                                                    </p>
                                                                 </div>
 
-                                                                {activeMobileCategory === "Expert Services" ? (
-                                                                    <div className="grid grid-cols-3 gap-6">
-                                                                        {servicesData.map((service) => (
-                                                                            <Link
-                                                                                key={service.id}
-                                                                                href={`/services/${service.slug}`}
-                                                                                className="group block p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-muted/30 transition-all duration-300"
-                                                                                onClick={() => setIsSolutionsHovered(false)}
-                                                                            >
-                                                                                <div className="flex items-start gap-4">
-                                                                                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
-                                                                                        <service.icon size={24} />
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <h4 className="font-bold text-foreground group-hover:text-primary transition-colors mb-2">{service.title}</h4>
-                                                                                        <p className="text-xs text-muted-foreground line-clamp-2">{service.shortDescription}</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </Link>
-                                                                        ))}
-                                                                    </div>
-                                                                ) : (
-                                                                    <div className="grid grid-cols-4 gap-6">
-                                                                        {productCategories
-                                                                            .find(c => c.title === activeMobileCategory)
-                                                                            ?.items.map((product) => (
+                                                                <AnimatePresence mode="wait">
+                                                                    <motion.div
+                                                                        key={activeMobileCategory}
+                                                                        initial={{ opacity: 0, y: 15 }}
+                                                                        animate={{ opacity: 1, y: 0 }}
+                                                                        exit={{ opacity: 0, y: -15 }}
+                                                                        transition={{ duration: 0.2 }}
+                                                                        className="grid grid-cols-2 xl:grid-cols-3 gap-6"
+                                                                    >
+                                                                        {activeMobileCategory === "Expert Services" ? (
+                                                                            servicesData.map((service) => (
                                                                                 <Link
-                                                                                    key={product.id}
-                                                                                    href={`/products/${product.slug}`}
-                                                                                    className="group flex flex-col gap-3 p-3 rounded-xl hover:bg-muted/30 transition-all"
+                                                                                    key={service.id}
+                                                                                    href={`/services/${service.slug}`}
+                                                                                    className="group/item flex items-center gap-5 p-6 rounded-[2rem] border border-border/50 bg-card/50 hover:border-primary/30 hover:bg-primary/[0.03] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-1.5"
                                                                                     onClick={() => setIsSolutionsHovered(false)}
                                                                                 >
-                                                                                    <div className="aspect-[4/3] rounded-lg bg-muted overflow-hidden relative shadow-sm border border-border/50">
-                                                                                        <img
-                                                                                            src={product.image}
-                                                                                            alt={product.title}
-                                                                                            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                                                                                        />
-                                                                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                                                                                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all transform group-hover/item:scale-105 shadow-inner">
+                                                                                        <service.icon size={30} />
                                                                                     </div>
-                                                                                    <div>
-                                                                                        <h5 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                                                                                            {product.title}
-                                                                                        </h5>
-                                                                                        <span className="text-[10px] text-muted-foreground mt-1 block">
-                                                                                            {product.category}
-                                                                                        </span>
+                                                                                    <div className="flex-1">
+                                                                                        <h5 className="font-bold text-base mb-1 group-hover/item:text-primary transition-colors">{service.title}</h5>
+                                                                                        <p className="text-[12px] text-muted-foreground line-clamp-2 leading-relaxed opacity-80">{service.shortDescription}</p>
                                                                                     </div>
                                                                                 </Link>
-                                                                            ))}
-                                                                    </div>
-                                                                )}
+                                                                            ))
+                                                                        ) : (
+                                                                            productCategories
+                                                                                .find(c => c.title === activeMobileCategory)
+                                                                                ?.items.map((product) => {
+                                                                                    const Icon = (product as any).icon || Package
+                                                                                    return (
+                                                                                        <Link
+                                                                                            key={product.id}
+                                                                                            href={`/products/${product.slug}`}
+                                                                                            className="group/item flex items-center gap-5 p-6 rounded-[2rem] border border-border/50 bg-card/50 hover:border-primary/30 hover:bg-primary/[0.03] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-1.5"
+                                                                                            onClick={() => setIsSolutionsHovered(false)}
+                                                                                        >
+                                                                                            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all transform group-hover/item:scale-105 shadow-inner">
+                                                                                                <Icon size={30} />
+                                                                                            </div>
+                                                                                            <div className="flex-1">
+                                                                                                <h5 className="font-bold text-base mb-1 group-hover/item:text-primary transition-colors">{product.title}</h5>
+                                                                                                <p className="text-[12px] text-muted-foreground line-clamp-2 leading-relaxed opacity-80">{product.category}</p>
+                                                                                            </div>
+                                                                                        </Link>
+                                                                                    )
+                                                                                })
+                                                                        )}
+                                                                    </motion.div>
+                                                                </AnimatePresence>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -312,39 +332,89 @@ export function Header() {
                                                             initial={{ height: 0, opacity: 0 }}
                                                             animate={{ height: "auto", opacity: 1 }}
                                                             exit={{ height: 0, opacity: 0 }}
-                                                            className="pl-4 flex flex-col gap-6 overflow-hidden mt-2 border-l-2 border-primary/20 ml-2"
+                                                            className="flex h-[75vh] mt-4 border border-border/40 rounded-3xl overflow-hidden bg-card/30 backdrop-blur-sm shadow-inner"
                                                         >
-                                                            {/* Services in Mobile */}
-                                                            <div className="flex flex-col gap-2">
-                                                                <span className="text-xs font-bold text-primary uppercase tracking-widest">Our Services</span>
-                                                                {servicesData.map((service) => (
-                                                                    <Link
-                                                                        key={service.id}
-                                                                        href={`/services/${service.slug}`}
-                                                                        onClick={() => setMobileMenuOpen(false)}
-                                                                        className="text-sm text-foreground py-1"
+                                                            {/* Mobile Solutions Sidebar */}
+                                                            <div className="w-[140px] border-r border-border/40 bg-muted/20 overflow-y-auto py-4 custom-scrollbar">
+                                                                <div className="flex flex-col gap-1 px-1.5">
+                                                                    <button
+                                                                        onClick={() => setActiveSubCategory("Expert Services")}
+                                                                        className={cn(
+                                                                            "p-3 text-[11px] font-bold rounded-xl transition-all flex flex-col items-center gap-2 text-center",
+                                                                            activeSubCategory === "Expert Services"
+                                                                                ? "bg-primary text-white shadow-md shadow-primary/20 scale-95"
+                                                                                : "text-muted-foreground/70 active:bg-muted/40"
+                                                                        )}
                                                                     >
-                                                                        {service.title}
-                                                                    </Link>
-                                                                ))}
+                                                                        <Layers size={18} />
+                                                                        <span>Expert Services</span>
+                                                                    </button>
+
+                                                                    {productCategories.map((cat) => {
+                                                                        const Icon = (cat as any).icon || Package
+                                                                        return (
+                                                                            <button
+                                                                                key={cat.title}
+                                                                                onClick={() => setActiveSubCategory(cat.title)}
+                                                                                className={cn(
+                                                                                    "p-3 text-[11px] font-bold rounded-xl transition-all flex flex-col items-center gap-2 text-center",
+                                                                                    activeSubCategory === cat.title
+                                                                                        ? "bg-primary text-white shadow-md shadow-primary/20 scale-95"
+                                                                                        : "text-muted-foreground/70 active:bg-muted/40"
+                                                                                )}
+                                                                            >
+                                                                                <Icon size={18} />
+                                                                                <span className="line-clamp-2">{cat.title}</span>
+                                                                            </button>
+                                                                        )
+                                                                    })}
+                                                                </div>
                                                             </div>
 
-                                                            {/* Products in Mobile */}
-                                                            {productCategories.map((cat) => (
-                                                                <div key={cat.title} className="flex flex-col gap-2">
-                                                                    <span className="text-xs font-bold text-primary uppercase tracking-widest">{cat.title}</span>
-                                                                    {cat.items.map(p => (
-                                                                        <Link
-                                                                            key={p.id}
-                                                                            href={`/products/${p.slug}`}
-                                                                            onClick={() => setMobileMenuOpen(false)}
-                                                                            className="text-sm text-foreground py-1"
-                                                                        >
-                                                                            {p.title}
-                                                                        </Link>
-                                                                    ))}
+                                                            {/* Mobile Solutions Content Area */}
+                                                            <div className="flex-1 overflow-y-auto custom-scrollbar bg-background/20 p-4">
+                                                                <div className="mb-4">
+                                                                    <h4 className="text-[10px] font-bold text-primary uppercase tracking-widest pl-1">{activeSubCategory || "Select Category"}</h4>
+                                                                    <div className="h-[1px] w-full bg-gradient-to-r from-primary/30 to-transparent mt-1" />
                                                                 </div>
-                                                            ))}
+
+                                                                <AnimatePresence mode="wait">
+                                                                    <motion.div
+                                                                        key={activeSubCategory}
+                                                                        initial={{ opacity: 0, x: 10 }}
+                                                                        animate={{ opacity: 1, x: 0 }}
+                                                                        exit={{ opacity: 0, x: -10 }}
+                                                                        transition={{ duration: 0.2 }}
+                                                                        className="flex flex-col gap-2"
+                                                                    >
+                                                                        {activeSubCategory === "Expert Services" ? (
+                                                                            servicesData.map((service) => (
+                                                                                <Link
+                                                                                    key={service.id}
+                                                                                    href={`/services/${service.slug}`}
+                                                                                    className="p-4 rounded-2xl bg-card/60 border border-border/30 text-[13px] font-semibold text-foreground flex items-center justify-between active:scale-[0.98] transition-all shadow-sm"
+                                                                                    onClick={() => setMobileMenuOpen(false)}
+                                                                                >
+                                                                                    {service.title}
+                                                                                    <ChevronRight size={14} className="text-primary" />
+                                                                                </Link>
+                                                                            ))
+                                                                        ) : (
+                                                                            productCategories.find(c => c.title === activeSubCategory)?.items.map(p => (
+                                                                                <Link
+                                                                                    key={p.id}
+                                                                                    href={`/products/${p.slug}`}
+                                                                                    className="p-4 rounded-2xl bg-card/60 border border-border/30 text-[13px] font-semibold text-foreground flex items-center justify-between active:scale-[0.98] transition-all shadow-sm"
+                                                                                    onClick={() => setMobileMenuOpen(false)}
+                                                                                >
+                                                                                    <span className="line-clamp-1">{p.title}</span>
+                                                                                    <ChevronRight size={14} className="text-primary" />
+                                                                                </Link>
+                                                                            ))
+                                                                        )}
+                                                                    </motion.div>
+                                                                </AnimatePresence>
+                                                            </div>
                                                         </motion.div>
                                                     )}
                                                 </AnimatePresence>

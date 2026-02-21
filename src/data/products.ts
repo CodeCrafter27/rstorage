@@ -1066,91 +1066,109 @@ export const productCategories = [
     {
         title: "Industrial Storage Rack",
         items: productsData.filter(p => p.category === "Industrial Storage Rack"),
-        description: "Heavy-duty industrial storage racks designed for warehouses and manufacturing facilities."
+        description: "Heavy-duty industrial storage racks designed for warehouses and manufacturing facilities.",
+        icon: Warehouse
     },
     {
         title: "Storage Rack",
         items: productsData.filter(p => p.category === "Storage Rack"),
-        description: "Versatile storage racks for retail, supermarkets, and commercial spaces."
+        description: "Versatile storage racks for retail, supermarkets, and commercial spaces.",
+        icon: Box
     },
     {
         title: "Display Rack",
         items: productsData.filter(p => p.category === "Display Rack"),
-        description: "Professional display racks for supermarkets and retail stores to maximize visibility."
+        description: "Professional display racks for supermarkets and retail stores to maximize visibility.",
+        icon: ShoppingBag
     },
     {
         title: "Heavy Duty Racks",
         items: productsData.filter(p => p.category === "Heavy Duty Racks"),
-        description: "Extra heavy-duty racks for industrial applications built to handle extreme loads."
+        description: "Extra heavy-duty racks for industrial applications built to handle extreme loads.",
+        icon: Factory
     },
     {
         title: "Mezzanine Floor",
         items: productsData.filter(p => p.category === "Mezzanine Floor"),
-        description: "Space-efficient mezzanine flooring systems to double your usable vertical storage."
+        description: "Space-efficient mezzanine flooring systems to double your usable vertical storage.",
+        icon: Layers
     },
     {
         title: "Pallet Rack",
         items: productsData.filter(p => p.category === "Pallet Rack"),
-        description: "Professional pallet racking systems for efficient warehouse and inventory management."
+        description: "Professional pallet racking systems for efficient warehouse and inventory management.",
+        icon: LayoutGrid
     },
     {
         title: "Long Span Shelving Racks",
         items: productsData.filter(p => p.category === "Long Span Shelving Racks"),
-        description: "Long span shelving for bulky and lengthy items. Perfect for storing large boxes and oversized products."
+        description: "Long span shelving for bulky and lengthy items. Perfect for storing large boxes.",
+        icon: Grid
     },
     {
         title: "Storage Bins",
         items: productsData.filter(p => p.category === "Storage Bins"),
-        description: "Organized storage bins for small parts, medicines, and components. Keep your inventory sorted."
+        description: "Organized storage bins for small parts, medicines, and components.",
+        icon: Package
     },
     {
         title: "Slotted Angle For Racks",
         items: productsData.filter(p => p.category === "Slotted Angle For Racks"),
-        description: "Versatile slotted angle components for custom rack building."
+        description: "Versatile slotted angle components for custom rack building.",
+        icon: Grid
     },
     {
         title: "Shopping Trollies",
         items: productsData.filter(p => p.category === "Shopping Trollies"),
-        description: "Shopping trolleys and baskets for supermarkets and retail stores."
+        description: "Shopping trolleys and baskets for supermarkets and retail stores.",
+        icon: ShoppingCart
     },
     {
         title: "Cable Tray",
         items: productsData.filter(p => p.category === "Cable Tray"),
-        description: "Cable management trays for organized wiring and safe installations."
+        description: "Cable management trays for organized wiring and safe installations.",
+        icon: Zap
     },
     {
         title: "Shelf Bins",
         items: productsData.filter(p => p.category === "Shelf Bins"),
-        description: "Shelf bins for organized small parts storage in workshops and warehouses."
+        description: "Shelf bins for organized small parts storage in workshops and warehouses.",
+        icon: Box
     },
     {
         title: "Wall Rack",
         items: productsData.filter(p => p.category === "Wall Rack"),
-        description: "Space-saving wall-mounted racks for retail and storage."
+        description: "Space-saving wall-mounted racks for retail and storage.",
+        icon: LayoutGrid
     },
     {
         title: "Cable Tray Rack",
         items: productsData.filter(p => p.category === "Cable Tray Rack"),
-        description: "Specialized racks for cable tray support and professional management."
+        description: "Specialized racks for cable tray support and professional management.",
+        icon: Zap
     },
     {
         title: "Cash Desk Counter",
         items: productsData.filter(p => p.category === "Cash Desk Counter"),
-        description: "Professional billing counters for supermarkets and retail stores."
+        description: "Professional billing counters for supermarkets and retail stores.",
+        icon: CreditCard
     },
     {
         title: "Industrial Storage Racks",
         items: productsData.filter(p => p.category === "Industrial Storage Racks"),
-        description: "Comprehensive industrial storage solutions for manufacturing and warehousing needs."
+        description: "Comprehensive industrial storage solutions for manufacturing.",
+        icon: Warehouse
     },
     {
         title: "Industrial Rack",
         items: productsData.filter(p => p.category === "Industrial Rack"),
-        description: "General purpose industrial racking for various applications."
+        description: "General purpose industrial racking for various applications.",
+        icon: Factory
     },
     {
         title: "Slotted Angle Racks",
         items: productsData.filter(p => p.category === "Slotted Angle Racks"),
-        description: "Economical and versatile slotted angle racking systems."
+        description: "Economical and versatile slotted angle racking systems.",
+        icon: Grid
     }
 ]
