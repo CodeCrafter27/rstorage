@@ -16,8 +16,8 @@ app = Flask(__name__)
 # Configure CORS - allow requests from your Next.js frontend
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000", "https://yourdomain.com"],
-        "methods": ["POST", "OPTIONS"],
+        "origins": ["http://localhost:3000", "http://127.0.0.1:3000", "https://yourdomain.com"],
+        "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type"]
     }
 })
@@ -238,11 +238,14 @@ def health():
 def get_config():
     """Return public configuration like company phone/whatsapp"""
     load_dotenv(override=True)
+    phone = os.getenv('CONTACT_PHONE', '+919310149385')
     return jsonify({
         'companyName': os.getenv('COMPANY_NAME', 'R Storage'),
-        'phone': os.getenv('CONTACT_PHONE', '+919310149385'),
+        'phone': phone,
         'whatsapp': os.getenv('CONTACT_WHATSAPP', '+919310149385'),
-        'whatsappMessage': os.getenv('WHATSAPP_MESSAGE', 'Hello R Storage, I am interested in your storage solutions.')
+        'whatsappMessage': os.getenv('WHATSAPP_MESSAGE', 'Hello R Storage, I am interested in your storage solutions.'),
+        'companyPhone': phone,
+        'contactWhatsApp': phone.replace('+', '').replace(' ', '')
     }), 200
 
 if __name__ == '__main__':
