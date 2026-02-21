@@ -266,7 +266,6 @@ export function Header() {
 
                     {/* Mobile Toggle */}
                     <div className="md:hidden flex items-center gap-2">
-                        <SearchBar />
                         <button
                             className="p-2 text-foreground"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -289,9 +288,13 @@ export function Header() {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/40 overflow-hidden"
+                            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/40 overflow-y-auto max-h-[85vh] custom-scrollbar shadow-2xl"
                         >
-                            <nav className="flex flex-col p-6 gap-4">
+                            <nav className="flex flex-col p-6 gap-6">
+                                {/* Search in Mobile Menu */}
+                                <div className="px-2">
+                                    <SearchBar isMobileMenu />
+                                </div>
                                 {navItems.map((item) => (
                                     <div key={item.name}>
                                         {item.hasMegaMenu ? (

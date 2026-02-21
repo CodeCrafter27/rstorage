@@ -225,7 +225,18 @@ export function Chatbot() {
         <>
             {/* Toggle Button */}
             <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-                {/* Tooltip removed to reduce mobile clutter */}
+                <AnimatePresence>
+                    {!isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="bg-primary/10 backdrop-blur-sm text-primary px-3 py-1 rounded-full border border-primary/20 text-[10px] font-bold uppercase tracking-tighter mb-1 select-none shadow-sm"
+                        >
+                            Chat with us
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <button
                     onClick={toggleChat}

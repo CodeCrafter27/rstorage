@@ -16,12 +16,17 @@ interface SearchResult {
     category: string
 }
 
-export function SearchBar() {
+export function SearchBar({ isMobileMenu = false }: { isMobileMenu?: boolean }) {
     const [isOpen, setIsOpen] = useState(false)
     const [query, setQuery] = useState("")
     const [results, setResults] = useState<SearchResult[]>([])
     const router = useRouter()
     const containerRef = useRef<HTMLDivElement>(null)
+
+    // Auto-open if in mobile menu to show the input
+    useEffect(() => {
+        if (isMobileMenu) setIsOpen(true)
+    }, [isMobileMenu])
 
     const allItems: SearchResult[] = [
         ...productsData.map(p => ({ id: p.id, title: p.title, slug: p.slug, type: "product" as const, category: p.category })),
@@ -43,25 +48,27 @@ export function SearchBar() {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-                setIsOpen(false)
+                if (!isMobileMenu) setIsOpen(false)
             }
         }
         document.addEventListener("mousedown", handleClickOutside)
         return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [])
+    }, [isMobileMenu])
 
     const handleSelect = (item: SearchResult) => {
         const path = item.type === "product" ? `/products/${item.slug}` : `/services/${item.slug}`
         router.push(path)
-        setIsOpen(false)
+        if (!isMobileMenu) setIsOpen(false)
         setQuery("")
     }
 
     return (
-        <div className="relative" ref={containerRef}>
+        <div className={cn("relative", isMobileMenu ? "w-full" : "")} ref={containerRef}>
             <div className={cn(
-                "flex items-center bg-muted/40 border border-border/40 rounded-full px-4 py-2 transition-all duration-300",
-                isOpen ? "w-64 md:w-64 border-primary/50 bg-background shadow-lg shadow-primary/5" : "w-10 h-10 md:w-40 p-0 md:px-4 cursor-pointer"
+                "flex items-center transition-all duration-300",
+                isMobileMenu
+                    ? "w-full bg-muted shadow-inner rounded-xl px-4 py-3 border border-border"
+                    : (isOpen ? "w-64 md:w-64 border-primary/50 bg-background shadow-lg shadow-primary/5 rounded-full px-4 py-2 border" : "w-10 h-10 md:w-40 p-0 md:px-4 cursor-pointer bg-muted/40 border border-border/40 rounded-full")
             )}
                 onClick={() => setIsOpen(true)}
             >
@@ -71,7 +78,7 @@ export function SearchBar() {
                     placeholder="Search products..."
                     className={cn(
                         "bg-transparent border-none focus:outline-none focus:ring-0 text-sm ml-3 w-full transition-all",
-                        !isOpen && "md:block hidden opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"
+                        (!isOpen && !isMobileMenu) && "md:block hidden opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"
                     )}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
