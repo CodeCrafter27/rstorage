@@ -10,7 +10,7 @@ export function Hero() {
     const y2 = useTransform(scrollY, [0, 500], [0, -80])
 
     return (
-        <section id="hero" className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white pt-24 pb-12 lg:pt-20 lg:pb-0">
+        <section id="hero" className="relative min-h-0 lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white pt-20 pb-10 lg:pt-20 lg:pb-0">
             <div className="absolute inset-0 z-0">
                 <motion.div
                     style={{ y: y1 }}
@@ -23,7 +23,7 @@ export function Hero() {
             </div>
 
             <div className="relative z-10 container mx-auto px-6 md:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
                         <motion.div
